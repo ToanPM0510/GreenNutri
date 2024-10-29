@@ -495,3 +495,614 @@
 }
 /*** Footer End ***/
 
+/* Recommend Modal Styles */
+#recommendModal .modal-content {
+    border: none;
+    border-radius: 15px;
+}
+
+#recommendModal .carousel-item {
+    min-height: 400px;
+    padding: 2rem;
+    text-align: center;
+}
+
+#recommendModal .question-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 2rem auto;
+    max-width: 600px;
+}
+
+#recommendModal .option-btn {
+    padding: 1rem;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#recommendModal .option-btn:hover, 
+#recommendModal .option-btn.selected {
+    background: var(--bs-primary);
+    color: white;
+    border-color: var(--bs-primary);
+}
+
+#recommendModal .progress-bar {
+    height: 5px;
+    background: #e9ecef;
+    margin: 1rem 0;
+}
+
+#recommendModal .progress-bar-inner {
+    height: 100%;
+    background: var(--bs-primary);
+    transition: width 0.3s;
+}
+
+/* Product Grid Styles */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.product-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 1.5rem;
+}
+
+.product-info h5 {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.rating {
+    color: #ffc107;
+    font-size: 0.9rem;
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--bs-success);
+}
+
+.benefits-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1rem;
+}
+
+.benefits-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.benefits-list li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--bs-success);
+    font-weight: bold;
+}
+
+/* Modal Results Styles */
+#resultsModal .modal-content {
+    border: none;
+    border-radius: 15px;
+}
+
+#resultsModal .modal-header {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+}
+
+#resultsModal .modal-title {
+    font-weight: 600;
+    color: #333;
+}
+
+#resultsModal .modal-body {
+    padding: 2rem;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+#resultsModal .modal-footer {
+    padding: 1.5rem;
+    border-top: 1px solid #dee2e6;
+}
+
+/* Button Styles */
+.btn-success {
+    background-color: var(--bs-success);
+    border-color: var(--bs-success);
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #218838;
+    transform: translateY(-2px);
+}
+
+.btn-outline-success {
+    color: var(--bs-success);
+    border-color: var(--bs-success);
+}
+
+.btn-outline-success:hover {
+    background-color: var(--bs-success);
+    color: white;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
+    .product-info {
+        padding: 1rem;
+    }
+    
+    .benefits-list li {
+        font-size: 0.8rem;
+    }
+}
+
+/* Custom Scrollbar */
+#resultsModal .modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+#resultsModal .modal-body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+#resultsModal .modal-body::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+#resultsModal .modal-body::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+/* Navigation Buttons Styles */
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn-outline-secondary {
+    border-color: #6c757d;
+    color: #6c757d;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* Option Button Active State */
+.option-btn.selected {
+    background-color: var(--bs-success);
+    color: white;
+    border-color: var(--bs-success);
+}
+/* Quiz Styles */
+.modal-content {
+    border-radius: 20px;
+    border: none;
+    overflow: hidden;
+}
+
+/* Progress Bar Styles */
+.quiz-progress {
+    padding: 20px 40px;
+    background: #fff;
+}
+
+.progress-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.step {
+    font-size: 12px;
+    color: #999;
+    position: relative;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.step.active {
+    color: #333;
+}
+
+.progress {
+    height: 4px;
+    background: #f0f0f0;
+    border-radius: 2px;
+}
+
+.progress-bar {
+    background-color: #6c757d;
+    transition: width 0.3s ease;
+}
+
+/* Question Container Styles */
+.question-container {
+    padding: 40px;
+    min-height: 500px;
+    position: relative;
+}
+
+.back-button {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.back-button button {
+    border: none;
+    background: none;
+    color: #999;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+.back-button button:hover {
+    color: #333;
+}
+
+.question-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.question-icon {
+    font-size: 40px;
+    color: #81c408;
+    margin-bottom: 20px;
+}
+
+.question-content h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.question-content p {
+    font-size: 16px;
+    margin-bottom: 40px;
+}
+
+/* Options Grid Styles */
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.option-card {
+    aspect-ratio: 1;
+    border: 2px solid #eee;
+    border-radius: 15px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 20px;
+}
+
+.option-card:hover {
+    border-color: #6c757d;
+    transform: translateY(-2px);
+}
+
+.option-card.selected {
+    background: #6c757d;
+    border-color: #6c757d;
+    color: white;
+}
+
+.option-card span {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .question-container {
+        padding: 20px;
+        min-height: 400px;
+    }
+    
+    .options-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 15px;
+    }
+    
+    .question-content h3 {
+        font-size: 20px;
+    }
+}
+/* Options Grid Styles */
+.options-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px auto;
+    flex-wrap: wrap; /* Cho phép xuống dòng nếu không đủ chỗ */
+    max-width: 800px; /* Đảm bảo không quá rộng */
+}
+
+.option-card {
+    flex: 1 1 150px; /* Linh động kích thước, tối thiểu 150px */
+    max-width: 200px; /* Giới hạn độ rộng tối đa */
+    height: 100px; /* Chiều cao cố định */
+    border: 2px solid #eee;
+    border-radius: 10px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 10px;
+    text-align: center;
+}
+
+.option-card:hover {
+    border-color: #81c408;
+    transform: translateY(-2px);
+}
+
+.option-card.selected {
+    background: #81c408;
+    border-color: #81c408;
+    color: white;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .options-grid {
+        gap: 15px;
+    }
+
+    .option-card {
+        flex: 1 1 120px; /* Giảm kích thước tối thiểu trên mobile */
+        height: 80px; /* Giảm chiều cao trên mobile */
+    }
+}
+/* Options Grid Styles */
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin: 30px auto;
+    max-width: 1000px; /* Tăng độ rộng tối đa */
+    justify-items: center; /* Căn giữa các item */
+}
+
+.option-card {
+    width: 100%;
+    max-width: 200px; /* Giới hạn độ rộng tối đa */
+    height: 120px; /* Chiều cao cố định */
+    border: 2px solid #eee;
+    border-radius: 10px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 10px;
+    text-align: center;
+}
+
+.option-card:hover {
+    border-color: #81c408;
+    transform: translateY(-2px);
+}
+
+.option-card.selected {
+    background: #81c408;
+    border-color: #81c408;
+    color: white;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .options-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 15px;
+    }
+
+    .option-card {
+        height: 100px; /* Giảm chiều cao trên mobile */
+    }
+}
+
+.options-grid {
+    display: flex; /* Thay đổi từ grid sang flex */
+    justify-content: center;
+    gap: 20px;
+    margin: 30px auto;
+    width: 100%; /* Đảm bảo chiều rộng tối đa */
+    max-width: 1000px;
+}
+
+.option-card {
+    flex: 1; /* Mỗi card sẽ có độ rộng bằng nhau */
+    min-width: 0; /* Cho phép co lại khi cần */
+    height: 100px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Đảm bảo text không bị overflow */
+.option-card span {
+    white-space: normal; /* Cho phép text xuống dòng trong card */
+    word-break: break-word;
+    font-size: 14px; /* Điều chỉnh kích thước chữ phù hợp */
+    line-height: 1.2;
+}
+
+/* Progress Steps Container */
+.quiz-progress {
+    padding: 20px 40px;
+    background: #fff;
+}
+
+/* Progress Steps Labels */
+.progress-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    position: relative;
+    padding: 0 20px; /* Thêm padding để dots không bị cắt */
+}
+
+/* Progress Line */
+.progress-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #eee;
+    z-index: 1;
+}
+
+/* Active Progress Line */
+.progress-line-active {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 2px;
+    background: #81c408; /* Màu của progress */
+    z-index: 2;
+    transition: width 0.3s ease;
+}
+
+/* Step Dots */
+.step {
+    position: relative;
+    z-index: 3;
+    background: white;
+    padding: 0 10px;
+    font-size: 12px;
+    color: #999;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Step Dot */
+.step::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #eee;
+    border-radius: 50%;
+    display: block;
+}
+
+/* Active Step */
+.step.active {
+    color: #81c408;
+}
+
+.step.active::before {
+    background: #81c408;
+}
+
+/* Completed Step */
+.step.completed::before {
+    background: #81c408;
+}
+.quantity-input {
+    display: flex;
+    align-items: center;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.quantity-btn {
+    border: none;
+    background: #f8f9fa;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.quantity-btn:hover {
+    background: #e9ecef;
+}
+
+.quantity-value {
+    width: 40px;
+    border: none;
+    text-align: center;
+    font-size: 14px;
+    padding: 8px 0;
+    -moz-appearance: textfield;
+}
+
+.quantity-value::-webkit-outer-spin-button,
+.quantity-value::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

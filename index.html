@@ -108,8 +108,9 @@
                         <h1 class="display-6 text-primary">Bột rau củ GreenNutri</h1>
                         <h1 class="mb-5 display-6 text-primary">Giải pháp bổ sung dinh dưỡng cho mọi nhà</h1>
                         <div class="position-relative mx-auto">
-                            <input class="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill" type="number" placeholder="Tìm kiếm">
-                            <button type="submit" class="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100" style="top: 0; right: 25%;">Tìm kiếm tại đây</button>
+                            <button class="btn btn-primary border-2 border-secondary py-3 px-4 rounded-pill text-white" data-bs-toggle="modal" data-bs-target="#recommendModal">
+                                <i class="fas fa-search me-2"></i>Tìm sản phẩm phù hợp với bạn
+                            </button>
                         </div>
                     </div>
                     <div class="col-md-12 col-lg-5">
@@ -1124,7 +1125,307 @@
         </div>
         <!-- Footer End -->
 
+<!-- Modal Recommend Products Start -->
+<div class="modal fade" id="recommendModal" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body p-0">
+                <!-- Progress Bar -->
+                <div class="quiz-progress">
+                    <div class="progress-steps">
+                        <!-- Progress Line Background -->
+                        <div class="progress-line"></div>
+                        <!-- Active Progress Line -->
+                        <div class="progress-line-active" style="width: 20%"></div>
+                        
+                        <!-- Steps -->
+                        <div class="step active">MỤC TIÊU</div>
+                        <div class="step">HƯƠNG VỊ</div>
+                        <div class="step">LỢI ÍCH</div>
+                        <div class="step">THÓI QUEN</div>
+                        <div class="step">NĂNG LƯỢNG</div>
+                    </div>
+                </div>
 
+                <!-- Carousel -->
+                <div id="personalizedCarousel" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+                    <div class="carousel-inner">
+                        <!-- Question 1 -->
+                        <div class="carousel-item active">
+                            <div class="question-container">
+                                <div class="back-button">
+                                    <button onclick="previousSlide()">
+                                        <i class="fas fa-arrow-left"></i>
+                                    </button>
+                                </div>
+                                
+                                <div class="question-content">
+                                    <div class="question-icon">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                    <h3>Mục tiêu sức khỏe của bạn là gì?</h3>
+                                    <p class="text-muted">Chia sẻ mục tiêu của bạn để chúng tôi có thể đề xuất sản phẩm phù hợp nhất.</p>
+                                    
+                                    <div class="options-grid">
+                                        <button class="option-card" onclick="selectOption(this, 0)">
+                                            <span>Thải độc cơ thể</span>
+                                        </button>
+                                        <button class="option-card" onclick="selectOption(this, 0)">
+                                            <span>Tăng cường hệ miễn dịch</span>
+                                        </button>
+                                        <button class="option-card" onclick="selectOption(this, 0)">
+                                            <span>Cải thiện tuần hoàn máu</span>
+                                        </button>
+                                        <button class="option-card" onclick="selectOption(this, 0)">
+                                            <span>Tăng năng lượng</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Question 2 -->
+                        <div class="carousel-item">
+                            <div class="question-container">
+                                <div class="back-button">
+                                    <button onclick="previousSlide()">
+                                        <i class="fas fa-arrow-left"></i>
+                                    </button>
+                                </div>
+                                
+                                <div class="question-content">
+                                    <div class="question-icon">
+                                        <i class="fas fa-leaf"></i>
+                                    </div>
+                                    <h3>Bạn thích hương vị nào khi sử dụng sản phẩm dinh dưỡng?</h3>
+                                    <p class="text-muted">Hương vị sản phẩm sẽ giúp bạn duy trì thói quen sử dụng đều đặn.</p>
+                                    <div class="options-grid">
+                                        <button class="option-card" onclick="selectOption(this, 0)">
+                                            <span>Hương vị tươi mát, nhẹ nhàng</span>
+                                        </button>
+                                        <button class="option-card" onclick="selectOption(this, 0)">
+                                            <span>Hương vị ngọt dịu, thiên về vị của rau củ</span>
+                                        </button>
+                                        <button class="option-card" onclick="selectOption(this, 0)">
+                                            <span>Hương vị nhiệt đới, có chút chua ngọt</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Question 3 -->
+                        <div class="carousel-item">
+                            <div class="question-container">
+                                <div class="back-button">
+                                    <button onclick="previousSlide()">
+                                        <i class="fas fa-arrow-left"></i>
+                                    </button>
+                                </div>
+                                
+                                <div class="question-content">
+                                    <div class="question-icon">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <h3>Lợi ích bạn quan tâm nhất?</h3>
+                                    <p class="text-muted">Mỗi sản phẩm được thiết kế với những công dụng đặc biệt khác nhau.</p>
+                                    
+                                    <div class="options-grid">
+                                        <button class="option-card" onclick="selectOption(this, 0)">
+                                            <span>Hỗ trợ giảm cân</span>
+                                        </button>
+                                        <button class="option-card" onclick="selectOption(this, 0)">
+                                            <span>Chống oxy hóa và ngăn ngừa lão hóa</span>
+                                        </button>
+                                        <button class="option-card" onclick="selectOption(this, 0)">
+                                            <span>Bổ sung dinh dưỡng cho da và tóc</span>
+                                        </button>
+                                        <button class="option-card" onclick="selectOption(this, 0)">
+                                            <span>Tăng cường năng lượng bền vững suốt cả ngày</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Question 4 -->
+                        <div class="carousel-item">
+                            <div class="question-container">
+                                <div class="back-button">
+                                    <button onclick="previousSlide()">
+                                        <i class="fas fa-arrow-left"></i>
+                                    </button>
+                                </div>
+                                
+                                <div class="question-content">
+                                    <div class="question-icon">
+                                        <i class="fas fa-running"></i>
+                                    </div>
+                                    <h3>Bạn có thường xuyên luyện tập thể thao không?</h3>
+                                    <p class="text-muted">Hoạt động thể chất ảnh hưởng đến nhu cầu dinh dưỡng hàng ngày.</p>
+                                    <div class="options-grid">
+                                        <button class="option-card" onclick="selectOption(this, 0)">
+                                            <span>Có, thường xuyên</span>
+                                        </button>
+                                        <button class="option-card" onclick="selectOption(this, 0)">
+                                            <span>Thỉnh thoảng</span>
+                                        </button>
+                                        <button class="option-card" onclick="selectOption(this, 0)">
+                                            <span>Hiếm khi</span>
+                                        </button>
+                                        <button class="option-card" onclick="selectOption(this, 0)">
+                                            <span>Không tập</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Question 5 -->
+                        <div class="carousel-item">
+                            <div class="question-container">
+                                <div class="back-button">
+                                    <button onclick="previousSlide()">
+                                        <i class="fas fa-arrow-left"></i>
+                                    </button>
+                                </div>
+                                
+                                <div class="question-content">
+                                    <div class="question-icon">
+                                        <i class="fas fa-battery-half"></i>
+                                    </div>
+                                    <h3>Bạn có hay cảm thấy mệt mỏi, thiếu năng lượng không?</h3>
+                                    <p class="text-muted">Giúp chúng tôi hiểu về tình trạng sức khỏe hiện tại của bạn.</p>
+                                    <div class="options-grid">
+                                        <button class="option-card" onclick="selectOption(this, 0)">
+                                            <span>Thường xuyên</span>
+                                        </button>
+                                        <button class="option-card" onclick="selectOption(this, 0)">
+                                            <span>Đôi khi</span>
+                                        </button>
+                                        <button class="option-card" onclick="selectOption(this, 0)">
+                                            <span>Rất ít khi</span>
+                                        </button>
+                                        <button class="option-card" onclick="selectOption(this, 0)">
+                                            <span>Không bao giờ</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                                                                                                                   
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="resultsModal" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title">Các sản phẩm phù hợp với bạn</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="product-grid">
+                    <!-- Sản phẩm 1 -->
+                    <div class="product-card">
+                        <img src="img/1.png" alt="Trà thảo mộc" class="product-img">
+                        <div class="product-info">
+                            <h5>Bột củ dền, cà rốt</h5>
+                            <div class="rating mb-2">⭐⭐⭐⭐⭐ (4.8/5)</div>
+                            <div class="price mb-2">180.000đ / 60g</div>
+                            <ul class="benefits-list mb-3">
+                                <li>Thải độc cơ thể tự nhiên</li>
+                                <li>Tăng cường trao đổi chất</li>
+                                <li>100% thảo mộc tự nhiên</li>
+                            </ul>
+                            <div class="d-flex gap-2 align-items-center">
+                                <div class="quantity-input">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="number" value="1" min="0" class="quantity-value">
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="btn btn-success flex-grow-1">Thêm</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sản phẩm 2 -->
+                    <div class="product-card">
+                        <img src="img/2.jpg" alt="Viên uống tăng đề kháng" class="product-img">
+                        <div class="product-info">
+                            <h5>Bột cải bó xôi</h5>
+                            <div class="rating mb-2">⭐⭐⭐⭐½ (4.5/5)</div>
+                            <div class="price mb-2">140.000đ / 60g</div>
+                            <ul class="benefits-list mb-3">
+                                <li>Tăng cường hệ miễn dịch</li>
+                                <li>Bổ sung vitamin và khoáng chất</li>
+                                <li>Phù hợp sử dụng hàng ngày</li>
+                            </ul>
+                            <div class="d-flex gap-2 align-items-center">
+                                <div class="quantity-input">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="number" value="1" min="0" class="quantity-value">
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="btn btn-success flex-grow-1">Thêm</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sản phẩm 3 -->
+                    <div class="product-card">
+                        <img src="img/3.jpg" alt="Viên uống điều hòa huyết áp" class="product-img">
+                        <div class="product-info">
+                            <h5>Bột cần tây</h5>
+                            <div class="rating mb-2">⭐⭐⭐⭐ (4.0/5)</div>
+                            <div class="price mb-2">140.000đ / 60g</div>
+                            <ul class="benefits-list mb-3">
+                                <li>Cải thiện tuần hoàn máu</li>
+                                <li>Hỗ trợ tim mạch</li>
+                                <li>Giảm stress và mệt mỏi</li>
+                            </ul>
+                            <div class="d-flex gap-2 align-items-center">
+                                <div class="quantity-input">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="number" value="1" min="0" class="quantity-value">
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="btn btn-success flex-grow-1">Thêm</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sản phẩm 4 -->
+                    <div class="product-card">
+                        <img src="img/4.jpg" alt="Viên uống năng lượng" class="product-img">
+                        <div class="product-info">
+                            <h5>Bột cà rốt</h5>
+                            <div class="rating mb-2">⭐⭐⭐⭐⭐ (4.9/5)</div>
+                            <div class="price mb-2">140.000đ / 60g</div>
+                            <ul class="benefits-list mb-3">
+                                <li>Tăng cường sinh lực</li>
+                                <li>Giảm mệt mỏi nhanh chóng</li>
+                                <li>Hiệu quả sau 7 ngày sử dụng</li>
+                            </ul>
+                            <div class="d-flex gap-2 align-items-center">
+                                <div class="quantity-input">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="number" value="1" min="0" class="quantity-value">
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="btn btn-success flex-grow-1">Thêm</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-success" onclick="restartQuiz()">Làm lại khảo sát</button>
+                <button type="button" class="btn btn-success">Xem giỏ hàng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Recommend Products End -->
 
 
         <!-- Back to Top -->
@@ -1141,6 +1442,8 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
     </body>
 
 </html>

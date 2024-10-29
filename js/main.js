@@ -148,4 +148,181 @@
     });
 
 })(jQuery);
+// Global variables
+let currentStep = 0;
+const totalSteps = 5;
+let carousel;
+let resultsModal;
+let userAnswers = Array(totalSteps).fill(null);
 
+// Progress update function
+function updateProgress() {
+    const progress = ((currentStep + 1) / totalSteps) * 100;
+    document.querySelector('.progress-line-active').style.width = `${progress}%`;
+    
+    // Update step states
+    document.querySelectorAll('.step').forEach((step, index) => {
+        if (index < currentStep) {
+            step.classList.add('completed');
+            step.classList.remove('active');
+        } else if (index === currentStep) {
+            step.classList.add('active');
+            step.classList.remove('completed');
+        } else {
+            step.classList.remove('active', 'completed');
+        }
+    });
+
+    // Update back button visibility
+    const backButton = document.querySelector('.back-button');
+    if (backButton) {
+        backButton.style.visibility = currentStep === 0 ? 'hidden' : 'visible';
+    }
+}
+
+// Option selection handler
+function selectOption(button, questionIndex) {
+    // Validate inputs
+    if (!button || questionIndex < 0 || questionIndex >= totalSteps) return;
+
+    // Remove selected class from all options in current question
+    button.closest('.options-grid').querySelectorAll('.option-card').forEach(btn => {
+        btn.classList.remove('selected');
+    });
+    
+    // Add selected class to clicked option
+    button.classList.add('selected');
+    
+    // Store answer
+    userAnswers[questionIndex] = button.querySelector('span').textContent;
+    
+    // Auto advance after short delay
+    setTimeout(() => {
+        nextSlide();
+    }, 500);
+}
+
+// Navigation functions
+function nextSlide() {
+    if (currentStep < totalSteps - 1) {
+        currentStep++;
+        carousel.next();
+        updateProgress();
+    } else {
+        showResults();
+    }
+}
+
+function previousSlide() {
+    if (currentStep > 0) {
+        currentStep--;
+        carousel.prev();
+        updateProgress();
+    }
+}
+
+// Results handling
+function showResults() {
+    resultsModal.show();
+}
+
+function processAnswers(answers) {
+    // Logic to process answers and return recommendations
+    // This is a simplified example
+    return {
+        products: [
+            {
+                name: "Sản phẩm 1",
+                description: "Phù hợp với mục tiêu của bạn",
+                match: "95%"
+            },
+            // Add more products...
+        ]
+    };
+}
+
+function displayRecommendations(recommendations) {
+    const resultsContainer = document.querySelector('#resultsModal .product-grid');
+    if (!resultsContainer) return;
+
+    resultsContainer.innerHTML = recommendations.products.map(product => `
+        <div class="product-card">
+            <div class="product-match">${product.match} phù hợp</div>
+            <h5>${product.name}</h5>
+            <p>${product.description}</p>
+        </div>
+    `).join('');
+}
+
+// Reset quiz function
+function restartQuiz() {
+    currentStep = 0;
+    userAnswers = Array(totalSteps).fill(null);
+    
+    // Reset UI elements
+    document.querySelectorAll('.option-card').forEach(btn => {
+        btn.classList.remove('selected');
+    });
+    
+    // Reset carousel
+    carousel.to(0);
+    updateProgress();
+    
+    // Hide results modal
+    if (resultsModal) {
+        resultsModal.hide();
+    }
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize carousel
+    carousel = new bootstrap.Carousel(document.getElementById('personalizedCarousel'), {
+        interval: false,
+        wrap: false,
+        touch: false
+    });
+    
+    // Initialize results modal
+    resultsModal = new bootstrap.Modal(document.getElementById('resultsModal'));
+    
+    // Initial progress update
+    updateProgress();
+
+    // Add modal close handler
+    document.getElementById('recommendModal').addEventListener('hidden.bs.modal', function () {
+        restartQuiz();
+    });
+
+    // Add keyboard navigation handler
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft') {
+            previousSlide();
+        } else if (e.key === 'ArrowRight') {
+            nextSlide();
+        }
+    });
+});
+document.querySelectorAll('.quantity-input').forEach(wrapper => {
+    const minusBtn = wrapper.querySelector('.minus');
+    const plusBtn = wrapper.querySelector('.plus');
+    const input = wrapper.querySelector('.quantity-value');
+
+    minusBtn.addEventListener('click', () => {
+        const currentValue = parseInt(input.value);
+        if (currentValue > 1) {
+            input.value = currentValue - 1;
+        }
+    });
+
+    plusBtn.addEventListener('click', () => {
+        const currentValue = parseInt(input.value);
+        input.value = currentValue + 1;
+    });
+
+    input.addEventListener('change', () => {
+        if (input.value < 1) {
+            input.value = 1;
+        }
+    });
+});
