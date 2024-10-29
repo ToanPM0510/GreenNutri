@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .carousel-item {
+            min-height: 400px;
+            background: #f8f9fa;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .question-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 2rem auto;
+            max-width: 600px;
+        }
+        
+        .option-btn {
+            padding: 1rem;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .option-btn:hover, .option-btn.selected {
+            background: #198754;
+            color: white;
+            border-color: #198754;
+        }
+
+        .progress-bar {
+            height: 5px;
+            background: #e9ecef;
+            margin: 1rem 0;
+        }
+
+        .progress-bar-inner {
+            height: 100%;
+            background: #198754;
+            transition: width 0.3s;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        .price {
+            color: #198754;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .rating {
+            color: #ffc107;
+        }
+
+        .modal-body {
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .benefits-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .benefits-list li:before {
+            content: "✓";
+            color: #198754;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Carousel -->
+    <div id="personalizedCarousel" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+        <div class="carousel-inner">
+            <!-- Màn hình 1: Giới thiệu -->
+            <div class="carousel-item active">
+                <div class="container">
+                    <h2 class="mb-4">Chúng tôi giúp bạn tìm sản phẩm phù hợp!</h2>
+                    <p class="mb-4">Hãy trả lời một vài câu hỏi để chúng tôi có thể gợi ý sản phẩm tốt nhất cho bạn.</p>
+                    <button class="btn btn-success px-4" onclick="nextSlide()">Bắt đầu</button>
+                </div>
+            </div>
+
+            <!-- Màn hình 2: Câu hỏi 1 -->
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="progress-bar">
+                        <div class="progress-bar-inner" style="width: 20%"></div>
+                    </div>
+                    <h3 class="mb-4">Mục tiêu sức khỏe của bạn là gì?</h3>
+                    <div class="question-options">
+                        <button class="option-btn" onclick="selectOption(this, 0)">Thải độc cơ thể</button>
+                        <button class="option-btn" onclick="selectOption(this, 0)">Tăng cường hệ miễn dịch</button>
+                        <button class="option-btn" onclick="selectOption(this, 0)">Cải thiện tuần hoàn máu</button>
+                        <button class="option-btn" onclick="selectOption(this, 0)">Tăng năng lượng</button>
+                    </div>
+                    <button class="btn btn-success px-4" onclick="nextSlide()">Tiếp theo</button>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="progress-bar">
+                        <div class="progress-bar-inner" style="width: 40%"></div>
+                    </div>
+                    <h3 class="mb-4">Bạn thích hương vị nào khi sử dụng sản phẩm dinh dưỡng?</h3>
+                    <div class="question-options">
+                        <button class="option-btn" onclick="selectOption(this, 4)">Hương vị tươi mát, nhẹ nhàng</button>
+                        <button class="option-btn" onclick="selectOption(this, 4)">Hương vị trái cây ngọt nhẹ, dễ uống</button>
+                        <button class="option-btn" onclick="selectOption(this, 4)">Hương vị ngọt dịu, thiên về vị của rau củ</button>
+                        <button class="option-btn" onclick="selectOption(this, 4)">Hương vị nhiệt đới, có chút chua ngọt</button>
+                    </div>
+                    <button class="btn btn-success px-4" onclick="nextSlide()">Tiếp theo</button>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="progress-bar">
+                        <div class="progress-bar-inner" style="width: 60%"></div>
+                    </div>
+                    <h3 class="mb-4">Bạn quan tâm đến lợi ích nào?</h3>
+                    <div class="question-options">
+                        <button class="option-btn" onclick="selectOption(this, 4)">Hỗ trợ giảm cân</button>
+                        <button class="option-btn" onclick="selectOption(this, 4)">Chống oxy hóa và ngăn ngừa lão hóa</button>
+                        <button class="option-btn" onclick="selectOption(this, 4)">Bổ sung dinh dưỡng cho da và tóc</button>
+                        <button class="option-btn" onclick="selectOption(this, 4)">Tăng cường năng lượng bền vững suốt cả ngày</button>
+                    </div>
+                    <button class="btn btn-success px-4" onclick="nextSlide()">Tiếp theo</button>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="progress-bar">
+                        <div class="progress-bar-inner" style="width: 80%"></div>
+                    </div>
+                    <h3 class="mb-4">Bạn có thường xuyên luyện tập thể thao không?</h3>
+                    <div class="question-options">
+                        <button class="option-btn" onclick="selectOption(this, 4)">Có, thường xuyên</button>
+                        <button class="option-btn" onclick="selectOption(this, 4)">Thỉnh thoảng</button>
+                        <button class="option-btn" onclick="selectOption(this, 4)">Hiếm khi</button>
+                        <button class="option-btn" onclick="selectOption(this, 4)">Không tập</button>
+                    </div>
+                    <button class="btn btn-success px-4" onclick="nextSlide()">Tiếp theo</button>
+                </div>
+            </div>
+
+            <!-- Màn hình 6: Câu hỏi 5 -->
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="progress-bar">
+                        <div class="progress-bar-inner" style="width: 100%"></div>
+                    </div>
+                    <h3 class="mb-4">Bạn có hay cảm thấy mệt mỏi, thiếu năng lượng không?</h3>
+                    <div class="question-options">
+                        <button class="option-btn" onclick="selectOption(this, 4)">Thường xuyên</button>
+                        <button class="option-btn" onclick="selectOption(this, 4)">Đôi khi</button>
+                        <button class="option-btn" onclick="selectOption(this, 4)">Rất ít khi</button>
+                        <button class="option-btn" onclick="selectOption(this, 4)">Không bao giờ</button>
+                    </div>
+                    <button class="btn btn-success px-4" onclick="showResults()">Hoàn tất</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Kết Quả -->
+    <div class="modal fade" id="resultsModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Các sản phẩm phù hợp với bạn</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="product-grid">
+                        <!-- Sản phẩm 1 -->
+                        <div class="product-card">
+                            <img src="https://www.mountaineers.org/images/placeholder-images/placeholder-400-x-300/@@images/image.jpeg" alt="Trà thảo mộc" class="product-img">
+                            <div class="product-info">
+                                <h5>Trà Thảo Mộc Detox</h5>
+                                <div class="rating mb-2">⭐⭐⭐⭐⭐ (4.8/5)</div>
+                                <div class="price mb-2">280.000đ</div>
+                                <ul class="benefits-list mb-3">
+                                    <li>Thải độc cơ thể tự nhiên</li>
+                                    <li>Tăng cường trao đổi chất</li>
+                                    <li>100% thảo mộc tự nhiên</li>
+                                </ul>
+                                <button class="btn btn-success w-100">Thêm vào giỏ hàng</button>
+                            </div>
+                        </div>
+
+                        <!-- Sản phẩm 2 -->
+                        <div class="product-card">
+                            <img src="https://www.mountaineers.org/images/placeholder-images/placeholder-400-x-300/@@images/image.jpeg" alt="Viên uống tăng đề kháng" class="product-img">
+                            <div class="product-info">
+                                <h5>Viên Uống Tăng Đề Kháng</h5>
+                                <div class="rating mb-2">⭐⭐⭐⭐½ (4.5/5)</div>
+                                <div class="price mb-2">450.000đ</div>
+                                <ul class="benefits-list mb-3">
+                                    <li>Tăng cường hệ miễn dịch</li>
+                                    <li>Bổ sung vitamin và khoáng chất</li>
+                                    <li>Phù hợp sử dụng hàng ngày</li>
+                                </ul>
+                                <button class="btn btn-success w-100">Thêm vào giỏ hàng</button>
+                            </div>
+                        </div>
+
+                        <!-- Sản phẩm 3 -->
+                        <div class="product-card">
+                            <img src="https://www.mountaineers.org/images/placeholder-images/placeholder-400-x-300/@@images/image.jpeg" alt="Viên uống điều hòa huyết áp" class="product-img">
+                            <div class="product-info">
+                                <h5>Viên Uống Điều Hòa Huyết Áp</h5>
+                                <div class="rating mb-2">⭐⭐⭐⭐ (4.0/5)</div>
+                                <div class="price mb-2">520.000đ</div>
+                                <ul class="benefits-list mb-3">
+                                    <li>Cải thiện tuần hoàn máu</li>
+                                    <li>Hỗ trợ tim mạch</li>
+                                    <li>Giảm stress và mệt mỏi</li>
+                                </ul>
+                                <button class="btn btn-success w-100">Thêm vào giỏ hàng</button>
+                            </div>
+                        </div>
+
+                        <!-- Sản phẩm 4 -->
+                        <div class="product-card">
+                            <img src="https://www.mountaineers.org/images/placeholder-images/placeholder-400-x-300/@@images/image.jpeg" alt="Viên uống năng lượng" class="product-img">
+                            <div class="product-info">
+                                <h5>Viên Uống Tăng Năng Lượng</h5>
+                                <div class="rating mb-2">⭐⭐⭐⭐⭐ (4.9/5)</div>
+                                <div class="price mb-2">580.000đ</div>
+                                <ul class="benefits-list mb-3">
+                                    <li>Tăng cường sinh lực</li>
+                                    <li>Giảm mệt mỏi nhanh chóng</li>
+                                    <li>Hiệu quả sau 7 ngày sử dụng</li>
+                                </ul>
+                                <button class="btn btn-success w-100">Thêm vào giỏ hàng</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-success" onclick="restartQuiz()">Làm lại khảo sát</button>
+                    <button type="button" class="btn btn-success">Xem giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let carousel;
+        let resultsModal;
+        let userAnswers = Array(5).fill(null);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            carousel = new bootstrap.Carousel(document.getElementById('personalizedCarousel'), {
+                interval: false,
+                wrap: false
+            });
+            resultsModal = new bootstrap.Modal(document.getElementById('resultsModal'));
+        });
+
+        function nextSlide() {
+            carousel.next();
+        }
+
+        function selectOption(button, questionIndex) {
+            button.parentElement.querySelectorAll('.option-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            button.classList.add('selected');
+            userAnswers[questionIndex] = button.textContent;
+        }
+
+        function showResults() {
+            // if (userAnswers.some(answer => answer === null)) {
+            //     alert('Vui lòng trả lời tất cả các câu hỏi!');
+            //     return;
+            // }
+            resultsModal.show();
+        }
+
+        function restartQuiz() {
+            userAnswers = Array(1).fill(null);
+            document.querySelectorAll('.option-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            resultsModal.hide();
+            carousel.to(0);
+        }
+    </script>
+</body>
+</html>
