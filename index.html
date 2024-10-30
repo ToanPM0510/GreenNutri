@@ -40,6 +40,9 @@
 
         <!-- Navbar start -->
         <div class="container-fluid fixed-top">
+            <div class="container topbar d-none d-lg-block">
+
+            </div>
             <div class="container px-0">
                 <nav class="navbar navbar-light bg-white navbar-expand-xl">
                     <a href="index.html" class="navbar-brand"><h1 class="text-primary display-6">GreenNutri</h1></a>
@@ -65,8 +68,8 @@
                         <div class="d-flex m-3 me-0">
                             <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button>
                             <a href="#" class="position-relative me-4 my-auto">
-                                <i class="fa fa-shopping-bag fa-2x"></i>
-                                <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+                                <i class="fa fa-shopping-bag fa-2x" id="cart-icon"></i>
+                                <span id="cart-count" class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
                             </a>
                             <a href="#" class="my-auto">
                                 <i class="fas fa-user fa-2x"></i>
@@ -100,7 +103,7 @@
 
 
         <!-- Hero Start -->
-        <div class="container-fluid py-5 mb-5 hero-header">
+        <div class="container-fluid mb-5 hero-header">
             <div class="container py-5">
                 <div class="row g-5 align-items-center">
                     <div class="col-md-12 col-lg-7">
@@ -117,12 +120,12 @@
                         <div id="carouselId" class="carousel slide position-relative" data-bs-ride="carousel">
                             <div class="carousel-inner" role="listbox">
                                 <div class="carousel-item active rounded">
-                                    <img src="img/hero-img-1.png" class="img-fluid w-100 h-100 bg-secondary rounded" alt="First slide">
-                                    <a href="#" class="btn px-4 py-2 text-white rounded">Fruites</a>
+                                    <img src="img/hero-img-1.jpg" class="img-fluid w-100 h-100 bg-secondary rounded" alt="First slide">
+                                    <a href="#tab-2" class="btn px-4 py-2 text-white rounded" data-bs-toggle="pill">Bột rau củ</a>
                                 </div>
                                 <div class="carousel-item rounded">
                                     <img src="img/hero-img-2.jpg" class="img-fluid w-100 h-100 rounded" alt="Second slide">
-                                    <a href="#" class="btn px-4 py-2 text-white rounded">Vesitables</a>
+                                    <a href="#tab-3" class="btn px-4 py-2 text-white rounded" data-bs-toggle="pill">Bột kết hợp</a>
                                 </div>
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
@@ -142,7 +145,7 @@
 
 
         <!-- Featurs Section Start -->
-        <div class="container-fluid featurs py-5">
+        <div class="container-fluid featurs">
             <div class="container py-5">
                 <div class="row g-4">
                     <div class="col-md-6 col-lg-3">
@@ -196,7 +199,7 @@
 
 
         <!-- Fruits Shop Start-->
-        <div class="container-fluid fruite py-5">
+        <div id="product-tabs" class="container-fluid fruite py-5">
             <div class="container py-5">
                 <div class="tab-class text-center">
                     <div class="row g-4">
@@ -212,7 +215,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="d-flex py-2 m-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-2">
-                                        <span class="text-dark" style="width: 175px;">Bột sấy nguyên bản</span>
+                                        <span class="text-dark" style="width: 175px;">Bột rau củ</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -239,7 +242,7 @@
                                                     <p>Bột hữu cơ nguyên chất GreenNutri sản xuất bằng công nghệ sấy lạnh hiện đại và đạt tiêu chuẩn VSATTP Việt Nam</p>
                                                     <div class="d-flex justify-content-center align-items-center flex-wrap text-center">
                                                         <p class="text-dark fs-5 fw-bold mb-0">180.000 VND / 60g</p>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary">
+                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)">
                                                             <i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ
                                                         </a>
                                                     </div>
@@ -253,11 +256,11 @@
                                                 </div>
                                                 <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Bột kết hợp</div>
                                                 <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                    <h4>Bột cà chua, cam vàng</h4>
+                                                    <h4>Bột cà chua, cam</h4>
                                                     <p>Bột hữu cơ nguyên chất GreenNutri sản xuất bằng công nghệ sấy lạnh hiện đại và đạt tiêu chuẩn VSATTP Việt Nam</p>
                                                     <div class="d-flex justify-content-center align-items-center flex-wrap text-center">
                                                         <p class="text-dark fs-5 fw-bold mb-0">180.000 VND / 60g</p>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -273,7 +276,7 @@
                                                     <p>Bột hữu cơ nguyên chất GreenNutri sản xuất bằng công nghệ sấy lạnh hiện đại và đạt tiêu chuẩn VSATTP Việt Nam</p>
                                                     <div class="d-flex justify-content-center align-items-center flex-wrap text-center">
                                                         <p class="text-dark fs-5 fw-bold mb-0">180.000 VND / 60g</p>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -289,7 +292,7 @@
                                                     <p>Bột hữu cơ nguyên chất GreenNutri sản xuất bằng công nghệ sấy lạnh hiện đại và đạt tiêu chuẩn VSATTP Việt Nam</p>
                                                     <div class="d-flex justify-content-center align-items-center flex-wrap text-center">
                                                         <p class="text-dark fs-5 fw-bold mb-0">180.000 VND / 60g</p>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -299,13 +302,13 @@
                                                 <div class="fruite-img">
                                                     <img src="img/nc-carot.jpg" class="img-fluid w-100 rounded-top" alt="">
                                                 </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Bột nguyên chất</div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Bột rau củ</div>
+                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom" id="productDiv" style="cursor: pointer;">
                                                     <h4>Bột cà rốt</h4>
                                                     <p>Bột hữu cơ nguyên chất GreenNutri sản xuất bằng công nghệ sấy lạnh hiện đại và đạt tiêu chuẩn VSATTP Việt Nam</p>
                                                     <div class="d-flex justify-content-center align-items-center flex-wrap text-center">
                                                         <p class="text-dark fs-5 fw-bold mb-0">140.000 VND / 60g</p>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -315,13 +318,13 @@
                                                 <div class="fruite-img">
                                                     <img src="img/nc-cantay.jpg" class="img-fluid w-100 rounded-top" alt="">
                                                 </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Bột nguyên chất</div>
+                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Bột rau củ</div>
                                                 <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                     <h4>Bột cần tây</h4>
                                                     <p>Bột hữu cơ nguyên chất GreenNutri sản xuất bằng công nghệ sấy lạnh hiện đại và đạt tiêu chuẩn VSATTP Việt Nam</p>
                                                     <div class="d-flex justify-content-center align-items-center flex-wrap text-center">
                                                         <p class="text-dark fs-5 fw-bold mb-0">140.000 VND / 60g</p>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -331,13 +334,13 @@
                                                 <div class="fruite-img">
                                                     <img src="img/nc-bido.jpg" class="img-fluid w-100 rounded-top" alt="">
                                                 </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Bột nguyên chất</div>
+                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Bột rau củ</div>
                                                 <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                     <h4>Bột bí đỏ</h4>
                                                     <p>Bột hữu cơ nguyên chất GreenNutri sản xuất bằng công nghệ sấy lạnh hiện đại và đạt tiêu chuẩn VSATTP Việt Nam</p>
                                                     <div class="d-flex justify-content-center align-items-center flex-wrap text-center">
                                                         <p class="text-dark fs-5 fw-bold mb-0">140.000 VND / 60g</p>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -347,13 +350,13 @@
                                                 <div class="fruite-img">
                                                     <img src="img/nc-caiboxoi.jpg" class="img-fluid w-100 rounded-top" alt="">
                                                 </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Bột nguyên chất</div>
+                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Bột rau củ</div>
                                                 <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                     <h4>Bột cải bó xôi</h4>
                                                     <p>Bột hữu cơ nguyên chất GreenNutri sản xuất bằng công nghệ sấy lạnh hiện đại và đạt tiêu chuẩn VSATTP Việt Nam</p>
                                                     <div class="d-flex justify-content-center align-items-center flex-wrap text-center">
                                                         <p class="text-dark fs-5 fw-bold mb-0">140.000 VND / 60g</p>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -371,13 +374,13 @@
                                                 <div class="fruite-img">
                                                     <img src="img/nc-carot.jpg" class="img-fluid w-100 rounded-top" alt="">
                                                 </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Bột nguyên chất</div>
+                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Bột rau củ</div>
                                                 <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                     <h4>Bột cà rốt</h4>
                                                     <p>Bột hữu cơ nguyên chất GreenNutri sản xuất bằng công nghệ sấy lạnh hiện đại và đạt tiêu chuẩn VSATTP Việt Nam</p>
                                                     <div class="d-flex justify-content-center align-items-center flex-wrap text-center">
                                                         <p class="text-dark fs-5 fw-bold mb-0">140.000 VND / 60g</p>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -387,13 +390,13 @@
                                                 <div class="fruite-img">
                                                     <img src="img/nc-cantay.jpg" class="img-fluid w-100 rounded-top" alt="">
                                                 </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Bột nguyên chất</div>
+                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Bột rau củ</div>
                                                 <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                     <h4>Bột cần tây</h4>
                                                     <p>Bột hữu cơ nguyên chất GreenNutri sản xuất bằng công nghệ sấy lạnh hiện đại và đạt tiêu chuẩn VSATTP Việt Nam</p>
                                                     <div class="d-flex justify-content-center align-items-center flex-wrap text-center">
                                                         <p class="text-dark fs-5 fw-bold mb-0">140.000 VND / 60g</p>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -403,13 +406,13 @@
                                                 <div class="fruite-img">
                                                     <img src="img/nc-bido.jpg" class="img-fluid w-100 rounded-top" alt="">
                                                 </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Bột nguyên chất</div>
+                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Bột rau củ</div>
                                                 <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                     <h4>Bột bí đỏ</h4>
                                                     <p>Bột hữu cơ nguyên chất GreenNutri sản xuất bằng công nghệ sấy lạnh hiện đại và đạt tiêu chuẩn VSATTP Việt Nam</p>
                                                     <div class="d-flex justify-content-center align-items-center flex-wrap text-center">
                                                         <p class="text-dark fs-5 fw-bold mb-0">140.000 VND / 60g</p>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -419,13 +422,13 @@
                                                 <div class="fruite-img">
                                                     <img src="img/nc-caiboxoi.jpg" class="img-fluid w-100 rounded-top" alt="">
                                                 </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Bột nguyên chất</div>
+                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Bột rau củ</div>
                                                 <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                     <h4>Bột cải bó xôi</h4>
                                                     <p>Bột hữu cơ nguyên chất GreenNutri sản xuất bằng công nghệ sấy lạnh hiện đại và đạt tiêu chuẩn VSATTP Việt Nam</p>
                                                     <div class="d-flex justify-content-center align-items-center flex-wrap text-center">
                                                         <p class="text-dark fs-5 fw-bold mb-0">140.000 VND / 60g</p>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -449,7 +452,7 @@
                                                     <p>Bột hữu cơ nguyên chất GreenNutri sản xuất bằng công nghệ sấy lạnh hiện đại và đạt tiêu chuẩn VSATTP Việt Nam</p>
                                                     <div class="d-flex justify-content-center align-items-center flex-wrap text-center">
                                                         <p class="text-dark fs-5 fw-bold mb-0">180.000 VND / 60g</p>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -461,11 +464,11 @@
                                                 </div>
                                                 <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Bột kết hợp</div>
                                                 <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                    <h4>Bột cà chua, cam vàng</h4>
+                                                    <h4>Bột cà chua, cam</h4>
                                                     <p>Bột hữu cơ nguyên chất GreenNutri sản xuất bằng công nghệ sấy lạnh hiện đại và đạt tiêu chuẩn VSATTP Việt Nam</p>
                                                     <div class="d-flex justify-content-center align-items-center flex-wrap text-center">
                                                         <p class="text-dark fs-5 fw-bold mb-0">180.000 VND / 60g</p>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -481,7 +484,7 @@
                                                     <p>Bột hữu cơ nguyên chất GreenNutri sản xuất bằng công nghệ sấy lạnh hiện đại và đạt tiêu chuẩn VSATTP Việt Nam</p>
                                                     <div class="d-flex justify-content-center align-items-center flex-wrap text-center">
                                                         <p class="text-dark fs-5 fw-bold mb-0">180.000 VND / 60g</p>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -497,7 +500,7 @@
                                                     <p>Bột hữu cơ nguyên chất GreenNutri sản xuất bằng công nghệ sấy lạnh hiện đại và đạt tiêu chuẩn VSATTP Việt Nam</p>
                                                     <div class="d-flex justify-content-center align-items-center flex-wrap text-center">
                                                         <p class="text-dark fs-5 fw-bold mb-0">180.000 VND / 60g</p>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -523,7 +526,7 @@
                                 <img src="img/nc-caiboxoi - Copy.jpg" class="img-fluid rounded-top w-100" alt="">
                                 <div class="px-4 rounded-bottom">
                                     <div class="service-content bg-primary text-center p-4 rounded">
-                                        <h5 class="text-white">Rau sạch</h5>
+                                        <h5 class="text-white">Combo Bột Kết Hợp (Trải nghiệm):</h5>
                                         <h3 class="mb-0">Giảm giá 20%</h3>
                                     </div>
                                 </div>
@@ -536,7 +539,7 @@
                                 <img src="img/nc-cantay - Copy.jpg" class="img-fluid rounded-top w-100" alt="">
                                 <div class="px-4 rounded-bottom">
                                     <div class="service-content bg-light text-center p-4 rounded">
-                                        <h5 class="text-primary">Nhiều dinh dưỡng</h5>
+                                        <h5 class="text-primary">Giải pháp lành mạnh</h5>
                                         <h3 class="mb-0">Giao hàng miễn phí</h3>
                                     </div>
                                 </div>
@@ -549,8 +552,8 @@
                                 <img src="img/bkh-cantay,taoxanh - Copy.jpg" class="img-fluid rounded-top w-100" alt="">
                                 <div class="px-4 rounded-bottom">
                                     <div class="service-content bg-secondary text-center p-4 rounded">
-                                        <h5 class="text-white">Củ quả ngon</h5>
-                                        <h3 class="mb-0">Giám giá 30%</h3>
+                                        <h5 class="text-white">Combo Bột rau củ Mix Loại</h5>
+                                        <h3 class="mb-0">Giảm giá 10%</h3>
                                     </div>
                                 </div>
                             </div>
@@ -571,13 +574,13 @@
                         <div class="vesitable-img">
                             <img src="img/nc-caiboxoi - Copy.jpg" class="img-fluid w-100 rounded-top" alt="">
                         </div>
-                        <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">Bột nguyên chất</div>
+                        <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">Bột rau củ</div>
                         <div class="p-4 rounded-bottom">
                             <h4>Bột cải bó xôi</h4>
                             <p>Bột hữu cơ nguyên chất GreenNutri sản xuất bằng công nghệ sấy lạnh hiện đại và đạt tiêu chuẩn VSATTP Việt Nam</p>
                             <div class="d-flex justify-content-center align-items-center flex-wrap text-center">
                                 <p class="text-dark fs-5 fw-bold mb-0">140.000 VND / 60g</p>
-                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                             </div>
                         </div>
                     </div>
@@ -585,13 +588,13 @@
                         <div class="vesitable-img">
                             <img src="img/nc-cantay - Copy.jpg" class="img-fluid w-100 rounded-top" alt="">
                         </div>
-                        <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">Bột nguyên chất</div>
+                        <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">Bột rau củ</div>
                         <div class="p-4 rounded-bottom">
                             <h4>Bột cần tây</h4>
                             <p>Bột hữu cơ nguyên chất GreenNutri sản xuất bằng công nghệ sấy lạnh hiện đại và đạt tiêu chuẩn VSATTP Việt Nam</p>
                             <div class="d-flex justify-content-center align-items-center flex-wrap text-center">
                                 <p class="text-dark fs-5 fw-bold mb-0">140.000 VND / 60g</p>
-                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                             </div>
                         </div>
                     </div>
@@ -605,7 +608,7 @@
                             <p>Bột hữu cơ nguyên chất GreenNutri sản xuất bằng công nghệ sấy lạnh hiện đại và đạt tiêu chuẩn VSATTP Việt Nam</p>
                             <div class="d-flex justify-content-center align-items-center flex-wrap text-center">
                                 <p class="text-dark fs-5 fw-bold mb-0">180.000 VND / 60g</p>
-                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                             </div>
                         </div>
                     </div>
@@ -619,7 +622,7 @@
                             <p>Bột hữu cơ nguyên chất GreenNutri sản xuất bằng công nghệ sấy lạnh hiện đại và đạt tiêu chuẩn VSATTP Việt Nam</p>
                             <div class="d-flex justify-content-center align-items-center flex-wrap text-center">
                                 <p class="text-dark fs-5 fw-bold mb-0">180.000 VND / 60g</p>
-                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                             </div>
                         </div>
                     </div>
@@ -627,13 +630,13 @@
                         <div class="vesitable-img">
                             <img src="img/nc-cuden - Copy.jpg" class="img-fluid w-100 rounded-top" alt="">
                         </div>
-                        <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">Bột nguyên chất</div>
+                        <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">Bột rau củ</div>
                         <div class="p-4 rounded-bottom">
                             <h4>Bột củ dền</h4>
                             <p>Bột hữu cơ nguyên chất GreenNutri sản xuất bằng công nghệ sấy lạnh hiện đại và đạt tiêu chuẩn VSATTP Việt Nam</p>
                             <div class="d-flex justify-content-center align-items-center flex-wrap text-center">
                                 <p class="text-dark fs-5 fw-bold mb-0">140.000 VND / 60g</p>
-                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                             </div>
                         </div>
                     </div>
@@ -641,13 +644,13 @@
                         <div class="vesitable-img">
                             <img src="img/nc-bido - Copy.jpg" class="img-fluid w-100 rounded-top" alt="">
                         </div>
-                        <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">Bột nguyên chất</div>
+                        <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">Bột rau củ</div>
                         <div class="p-4 rounded-bottom">
                             <h4>Bột bí đỏ</h4>
                             <p>Bột hữu cơ nguyên chất GreenNutri sản xuất bằng công nghệ sấy lạnh hiện đại và đạt tiêu chuẩn VSATTP Việt Nam</p>
                             <div class="d-flex justify-content-center align-items-center flex-wrap text-center">
                                 <p class="text-dark fs-5 fw-bold mb-0">140.000 VND / 60g</p>
-                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                             </div>
                         </div>
                     </div>
@@ -655,13 +658,13 @@
                         <div class="vesitable-img">
                             <img src="img/nc-carot - Copy.jpg" class="img-fluid w-100 rounded-top" alt="">
                         </div>
-                        <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">Bột nguyên chất</div>
+                        <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">Bột rau củ</div>
                         <div class="p-4 rounded-bottom">
                             <h4>Bột cà rốt</h4>
                             <p>Bột hữu cơ nguyên chất GreenNutri sản xuất bằng công nghệ sấy lạnh hiện đại và đạt tiêu chuẩn VSATTP Việt Nam</p>
                             <div class="d-flex justify-content-center align-items-center flex-wrap text-center">
                                 <p class="text-dark fs-5 fw-bold mb-0">140.000 VND / 60g</p>
-                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                             </div>
                         </div>
                     </div>
@@ -675,7 +678,7 @@
                             <p>Bột hữu cơ nguyên chất GreenNutri sản xuất bằng công nghệ sấy lạnh hiện đại và đạt tiêu chuẩn VSATTP Việt Nam</p>
                             <div class="d-flex justify-content-center align-items-center flex-wrap text-center">
                                 <p class="text-dark fs-5 fw-bold mb-0">180.000 VND / 60g</p>
-                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                             </div>
                         </div>
                     </div>
@@ -684,39 +687,8 @@
         </div>
         <!-- Vesitable Shop End -->
 
-
-        <!-- Banner Section Start-->
-        <div class="container-fluid banner bg-secondary my-5">
-            <div class="container py-5">
-                <div class="row g-4 align-items-center">
-                    <div class="col-lg-6">
-                        <div class="py-4">
-                            <h1 class="display-3 text-white">Fresh Exotic Fruits</h1>
-                            <p class="fw-normal display-3 text-dark mb-4">in Our Store</p>
-                            <p class="mb-4 text-dark">The generated Lorem Ipsum is therefore always free from repetition injected humour, or non-characteristic words etc.</p>
-                            <a href="#" class="banner-btn btn border-2 border-white rounded-pill text-dark py-3 px-5">BUY</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="position-relative">
-                            <img src="img/baner-1.png" class="img-fluid w-100 rounded" alt="">
-                            <div class="d-flex align-items-center justify-content-center bg-white rounded-circle position-absolute" style="width: 140px; height: 140px; top: 0; left: 0;">
-                                <h1 style="font-size: 100px;">1</h1>
-                                <div class="d-flex flex-column">
-                                    <span class="h2 mb-0">50$</span>
-                                    <span class="h4 text-muted mb-0">kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Banner Section End -->
-
-
         <!-- Bestsaler Product Start -->
-        <div class="container-fluid py-5">
+        <div class="container-fluid">
             <div class="container py-5">
                 <div class="text-center mx-auto mb-5" style="max-width: 700px;">
                     <h1 class="display-4">Sản phẩm phổ biến</h1>
@@ -739,7 +711,7 @@
                                         <i class="fas fa-star"></i>
                                     </div>
                                     <h5 class="mb-3">140.000 VND/60g</h4>
-                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                                 </div>
                             </div>
                         </div>
@@ -760,7 +732,7 @@
                                         <i class="fas fa-star text-primary"></i>
                                     </div>
                                     <h5 class="mb-3">140.000 VND/60g</h5>
-                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                                 </div>
                             </div>
                         </div>
@@ -781,7 +753,7 @@
                                         <i class="fas fa-star text-primary"></i>
                                     </div>
                                     <h5 class="mb-3">140.000 VND/60g</h5>
-                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                                 </div>
                             </div>
                         </div>
@@ -793,7 +765,7 @@
                                     <img src="img/best-product-4.jpg" class="img-fluid rounded-circle w-100" alt="">
                                 </div>
                                 <div class="col-6">
-                                    <a href="#" class="h5">Bột cà chua, cam vàng</a>
+                                    <a href="#" class="h5">Bột cà chua, cam</a>
                                     <div class="d-flex my-3">
                                         <i class="fas fa-star text-primary"></i>
                                         <i class="fas fa-star text-primary"></i>
@@ -802,7 +774,7 @@
                                         <i class="fas fa-star"></i>
                                     </div>
                                     <h5 class="mb-3">180.000 VND/60g</h5>
-                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                                 </div>
                             </div>
                         </div>
@@ -823,7 +795,7 @@
                                         <i class="fas fa-star"></i>
                                     </div>
                                     <h5 class="mb-3">180.000 VND/60g</h5>
-                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                                 </div>
                             </div>
                         </div>
@@ -844,7 +816,7 @@
                                         <i class="fas fa-star"></i>
                                     </div>
                                     <h5 class="mb-3">140.000 VND/60g</h5>
-                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                                 </div>
                             </div>
                         </div>
@@ -862,7 +834,7 @@
                                     <i class="fas fa-star"></i>
                                 </div>
                                 <h4 class="mb-3">140.000 VND/60g</h4>
-                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                             </div>
                         </div>
                     </div>
@@ -879,7 +851,7 @@
                                     <i class="fas fa-star"></i>
                                 </div>
                                 <h4 class="mb-3">140.000 VND/60g</h4>
-                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                             </div>
                         </div>
                     </div>
@@ -896,7 +868,7 @@
                                     <i class="fas fa-star"></i>
                                 </div>
                                 <h4 class="mb-3">180.000 VND/60g</h4>
-                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                             </div>
                         </div>
                     </div>
@@ -913,7 +885,7 @@
                                     <i class="fas fa-star"></i>
                                 </div>
                                 <h4 class="mb-3">180.000 VND/60g</h4>
-                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
+                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary" onclick="addToCart(event)"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm vào giỏ</a>
                             </div>
                         </div>
                     </div>
@@ -984,7 +956,7 @@
                                 </div>
                                 <div class="ms-4 d-block">
                                     <h4 class="text-dark">Vu Quy Hoang Anh</h4>
-                                    <p class="m-0 pb-3">Profession</p>
+                                    <p class="m-0 pb-3">Nhân viên</p>
                                     <div class="d-flex pe-5">
                                         <i class="fas fa-star text-primary"></i>
                                         <i class="fas fa-star text-primary"></i>
@@ -1008,8 +980,8 @@
                                     <img src="img/testimonial-1.jpg" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
                                 </div>
                                 <div class="ms-4 d-block">
-                                    <h4 class="text-dark">Client Name</h4>
-                                    <p class="m-0 pb-3">Profession</p>
+                                    <h4 class="text-dark">Vu Quy Hoang Anh</h4>
+                                    <p class="m-0 pb-3">Nhân viên</p>
                                     <div class="d-flex pe-5">
                                         <i class="fas fa-star text-primary"></i>
                                         <i class="fas fa-star text-primary"></i>
@@ -1033,8 +1005,8 @@
                                     <img src="img/testimonial-1.jpg" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
                                 </div>
                                 <div class="ms-4 d-block">
-                                    <h4 class="text-dark">Client Name</h4>
-                                    <p class="m-0 pb-3">Profession</p>
+                                    <h4 class="text-dark">Vu Quy Hoang Anh</h4>
+                                    <p class="m-0 pb-3">Nhân viên</p>
                                     <div class="d-flex pe-5">
                                         <i class="fas fa-star text-primary"></i>
                                         <i class="fas fa-star text-primary"></i>
@@ -1060,19 +1032,19 @@
                         <div class="col-lg-3">
                             <a href="#">
                                 <h1 class="text-primary mb-0">GreenNutri</h1>
-                                <p class="text-secondary mb-0">Fresh products</p>
+                                
                             </a>
                         </div>
                         <div class="col-lg-6">
-                            <div class="position-relative mx-auto">
-                                <input class="form-control border-0 w-100 py-3 px-4 rounded-pill" type="number" placeholder="Your Email">
-                                <button type="submit" class="btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white" style="top: 0; right: 0;">Subscribe Now</button>
-                            </div>
+                            <form class="position-relative mx-auto" id="contact-form">
+                                <input class="form-control border-0 w-100 py-3 px-4 rounded-pill" type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Điền số điện thoại của bạn để được tư vấn" required>
+                                <button type="submit" class="btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white" style="top: 0; right: 0;">Tôi cần tư vấn</button>
+                            </form>
+                            <div id="confirmation-message" class="mt-3" style="display: none;"></div>
                         </div>
                         <div class="col-lg-3">
                             <div class="d-flex justify-content-end pt-3">
-                                <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href="https://www.facebook.com/hoanganh.vuquy.9"><i class="fab fa-facebook-f"></i></a>
                                 <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-youtube"></i></a>
                                 <a class="btn btn-outline-secondary btn-md-square rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
                             </div>
@@ -1081,42 +1053,34 @@
                 </div>
                 <div class="row g-5">
                     <div class="col-lg-3 col-md-6">
-                        <div class="footer-item">
-                            <h4 class="text-light mb-3">Why People Like us!</h4>
-                            <p class="mb-4">typesetting, remaining essentially unchanged. It was 
-                                popularised in the 1960s with the like Aldus PageMaker including of Lorem Ipsum.</p>
-                            <a href="" class="btn border-secondary py-2 px-4 rounded-pill text-primary">Read More</a>
+                        <div class="d-flex flex-column text-start footer-item">
+                            <h4 class="text-light mb-3">Thông Tin Cửa Hàng</h4>
+                            <a class="btn-link" href="">Về Chúng Tôi</a>
+                            <a class="btn-link" href="">Liên Hệ</a>
+                            <a class="btn-link" href="">Chính Sách Bảo Mật</a>
+                            <a class="btn-link" href="">Điều Khoản & Điều Kiện</a>
+                            <a class="btn-link" href="">Chính Sách Đổi Trả</a>
+                            <a class="btn-link" href="">Câu Hỏi Thường Gặp & Trợ Giúp</a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="d-flex flex-column text-start footer-item">
-                            <h4 class="text-light mb-3">Shop Info</h4>
-                            <a class="btn-link" href="">About Us</a>
-                            <a class="btn-link" href="">Contact Us</a>
-                            <a class="btn-link" href="">Privacy Policy</a>
-                            <a class="btn-link" href="">Terms & Condition</a>
-                            <a class="btn-link" href="">Return Policy</a>
-                            <a class="btn-link" href="">FAQs & Help</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="d-flex flex-column text-start footer-item">
-                            <h4 class="text-light mb-3">Account</h4>
-                            <a class="btn-link" href="">My Account</a>
-                            <a class="btn-link" href="">Shop details</a>
-                            <a class="btn-link" href="">Shopping Cart</a>
-                            <a class="btn-link" href="">Wishlist</a>
-                            <a class="btn-link" href="">Order History</a>
-                            <a class="btn-link" href="">International Orders</a>
+                            <h4 class="text-light mb-3">Tài Khoản</h4>
+                            <a class="btn-link" href="">Tài Khoản Của Tôi</a>
+                            <a class="btn-link" href="">Chi Tiết Cửa Hàng</a>
+                            <a class="btn-link" href="">Giỏ Hàng</a>
+                            <a class="btn-link" href="">Danh Sách Yêu Thích</a>
+                            <a class="btn-link" href="">Lịch Sử Đơn Hàng</a>
+                            <a class="btn-link" href="">Đơn Hàng Quốc Tế</a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="footer-item">
-                            <h4 class="text-light mb-3">Contact</h4>
-                            <p>Address: 1429 Netus Rd, NY 48247</p>
-                            <p>Email: Example@gmail.com</p>
-                            <p>Phone: +0123 4567 8910</p>
-                            <p>Payment Accepted</p>
+                            <h4 class="text-light mb-3">Liên Hệ</h4>
+                            <p>Văn Phòng Đại Diện: Số 20, thôn 3, Thạch Hòa, Thạch Thất, Hà Nội</p>
+                            <p>Email: GreenNutri@gmail.com</p>
+                            <p>Phone: (+84) 9812 345 679</p>
+                            <p>Chấp nhận thanh toán</p>
                             <img src="img/payment.png" class="img-fluid" alt="">
                         </div>
                     </div>
@@ -1442,6 +1406,16 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+        document.getElementById('productDiv').addEventListener('click', function() {
+        window.location.href = 'shop-detail.html'; // Thay thế bằng URL thực tế
+    });
+    
+    function addToCart(event) {
+        event.stopPropagation(); // Ngăn chặn sự kiện click trên <div> cha
+        alert("Sản phẩm đã được thêm vào giỏ hàng!");
+    }
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 
     </body>

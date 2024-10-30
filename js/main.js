@@ -118,7 +118,6 @@
         $('.btn-play').click(function () {
             $videoSrc = $(this).data("src");
         });
-        console.log($videoSrc);
 
         $('#videoModal').on('shown.bs.modal', function (e) {
             $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
@@ -273,7 +272,6 @@ function restartQuiz() {
         resultsModal.hide();
     }
 }
-
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize carousel
@@ -282,17 +280,15 @@ document.addEventListener('DOMContentLoaded', function() {
         wrap: false,
         touch: false
     });
-    
+
     // Initialize results modal
     resultsModal = new bootstrap.Modal(document.getElementById('resultsModal'));
-    
+
     // Initial progress update
     updateProgress();
 
     // Add modal close handler
-    document.getElementById('recommendModal').addEventListener('hidden.bs.modal', function () {
-        restartQuiz();
-    });
+    document.getElementById('recommendModal').addEventListener('hidden.bs.modal', restartQuiz);
 
     // Add keyboard navigation handler
     document.addEventListener('keydown', function(e) {
@@ -302,27 +298,79 @@ document.addEventListener('DOMContentLoaded', function() {
             nextSlide();
         }
     });
-});
-document.querySelectorAll('.quantity-input').forEach(wrapper => {
-    const minusBtn = wrapper.querySelector('.minus');
-    const plusBtn = wrapper.querySelector('.plus');
-    const input = wrapper.querySelector('.quantity-value');
 
-    minusBtn.addEventListener('click', () => {
-        const currentValue = parseInt(input.value);
-        if (currentValue > 1) {
-            input.value = currentValue - 1;
+    // Handle quantity input
+    document.querySelectorAll('.quantity-input').forEach(wrapper => {
+        const minusBtn = wrapper.querySelector('.minus');
+        const plusBtn = wrapper.querySelector('.plus');
+        const input = wrapper.querySelector('.quantity-value');
+
+        minusBtn.addEventListener('click', () => {
+            const currentValue = parseInt(input.value);
+            if (currentValue > 1) {
+                input.value = currentValue - 1;
+            }
+        });
+
+        plusBtn.addEventListener('click', () => {
+            const currentValue = parseInt(input.value);
+            input.value = currentValue + 1;
+        });
+
+        input.addEventListener('change', () => {
+            if (input.value < 1) {
+                input.value = 1;
+            }
+        });
+    });
+
+    // Handle carousel link clicks
+    const carouselLinks = document.querySelectorAll('.carousel-item a');
+    carouselLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            const targetTabId = this.getAttribute('href');
+            document.getElementById('product-tabs').scrollIntoView({ behavior: 'smooth' });
+
+            const targetTabLink = document.querySelector(`#product-tabs .nav-pills a[href="${targetTabId}"]`);
+            if (targetTabLink) {
+                const tab = new bootstrap.Tab(targetTabLink);
+                tab.show();
+            }
+        });
+    });
+
+    const form = document.getElementById('contact-form');
+    const phoneInput = document.getElementById('phone');
+    const confirmationMessage = document.getElementById('confirmation-message');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Ngăn chặn hành vi mặc định của biểu mẫu
+
+        if (phoneInput.checkValidity()) {
+            debugger
+            confirmationMessage.style.display = 'block';
+            confirmationMessage.innerHTML = `
+                <div class="alert alert-success rounded-pill py-3 px-4 text-center">
+                    Cảm ơn bạn đã đăng ký! Chúng tôi sẽ liên hệ với bạn sớm nhất có thể.
+                </div>
+            `;
+        } else {
+            confirmationMessage.style.display = 'block';
+            confirmationMessage.innerHTML = `
+                <div class="alert alert-danger rounded-pill py-3 px-4 text-center">
+                    Vui lòng nhập số điện thoại hợp lệ theo định dạng 123-45-678.
+                </div>
+            `;
         }
     });
-
-    plusBtn.addEventListener('click', () => {
-        const currentValue = parseInt(input.value);
-        input.value = currentValue + 1;
+        document.getElementById('productDiv').addEventListener('click', function() {
+        window.location.href = 'shop-detail.html'; // Thay thế bằng URL thực tế
     });
-
-    input.addEventListener('change', () => {
-        if (input.value < 1) {
-            input.value = 1;
-        }
-    });
+    
+    function addToCart(event) {
+        event.stopPropagation(); // Ngăn chặn sự kiện click trên <div> cha
+        alert("Sản phẩm đã được thêm vào giỏ hàng!");
+    }
 });
